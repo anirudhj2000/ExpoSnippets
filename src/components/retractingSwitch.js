@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image, ImageBackground } from "react-native";
 import Animated, {
   withSpring,
   useSharedValue,
@@ -34,14 +34,29 @@ const RetractingSwitch = ({ value, onChange }) => {
     });
 
   return (
-    <View style={styles.body}>
+    <ImageBackground
+      source={
+        value
+          ? require("../../assets/day.png")
+          : require("../../assets/night.png")
+      }
+      style={styles.body}
+      resizeMode="contain"
+    >
       <GestureDetector gesture={tap}>
-        <Animated.View style={[styles.switchToggle, animatedStyles]} />
+        <Animated.View style={[styles.switchToggle, animatedStyles]}>
+          <Image
+            source={
+              value
+                ? require("../../assets/Sun.png")
+                : require("../../assets/Moon.png")
+            }
+            resizeMode="contain"
+            style={styles.switchToggle}
+          />
+        </Animated.View>
       </GestureDetector>
-      <View style={{ marginHorizontal: "5%" }}>
-        <Text>{value ? "On" : "Off"}</Text>
-      </View>
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -52,17 +67,13 @@ const styles = new StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     width: 120,
-    height: 48,
-    borderRadius: 48,
     borderColor: "#c7c7c7",
-    borderWidth: 1,
     padding: 1,
   },
   switchToggle: {
-    height: 44,
-    width: 44,
+    height: 40,
+    width: 40,
     borderRadius: 48,
-    backgroundColor: "#c7c7c7",
   },
 });
 
