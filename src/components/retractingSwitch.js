@@ -22,13 +22,11 @@ const RetractingSwitch = ({ value, onChange }) => {
     .runOnJS(true)
     .onBegin(() => {})
     .onChange((event) => {
-      console.log("event", event.translationX);
       offset.value = Math.min(event.translationX, 72);
     })
     .onFinalize(() => {
       if (offset.value > 70) {
         HandleChange();
-        console.log("offsert", offset.value);
       }
       offset.value = withTiming(0);
     });
