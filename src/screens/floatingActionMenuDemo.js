@@ -55,7 +55,7 @@ const FloatingActionButtonDemo = () => {
         positionX.value = width * 0.88;
       }
 
-      if (positionY.value > height * 0.8) {
+      if (positionY.value > height * 0.6) {
         handleHideIcon();
       }
 
